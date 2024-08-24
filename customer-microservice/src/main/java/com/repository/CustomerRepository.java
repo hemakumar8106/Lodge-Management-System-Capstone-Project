@@ -1,5 +1,16 @@
 package com.repository;
 
-public class CustomerRepository {
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.entity.Customer;
+
+@Repository
+public interface CustomerRepository extends CrudRepository<Customer, Integer>{
+
+	List<Customer> findCustomerByCustomerId(int customerId);
+
+	
 }

@@ -18,6 +18,7 @@ public class RoomController {
 	@Autowired
     RoomService roomService;
 	
+	
 	@GetMapping("/{roomReferenceId}")
 	public List<Room> viewroomByRoomReferenceId(@PathVariable("roomReferenceId")String roomReferenceId){
 		List<Room> roomList = roomService.listRoomByRoomReferenceId(roomReferenceId);
