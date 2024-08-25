@@ -11,8 +11,7 @@ import com.entity.Room;
 public interface RoomRepository extends CrudRepository<Room, Integer> {
 
 	public List<Room> findRoomByRoomReferenceId(String roomReferenceId);
-		// TODO Auto-generated method stub
-
+		
 	public List<Room> findRoomBylocation(String location);
 
 	

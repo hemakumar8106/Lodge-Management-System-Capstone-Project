@@ -20,7 +20,7 @@ public class RoomService {
 	}
 
 	public List<Room> listRoomByLocation(String location) {
-		// TODO Auto-generated method stub
+		
 		return roomRepository.findRoomBylocation(location);
 	}
 }

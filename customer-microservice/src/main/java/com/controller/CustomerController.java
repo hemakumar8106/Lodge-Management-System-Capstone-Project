@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +25,26 @@ public class CustomerController {
     CustomerService customerService;		
 	
 	@PostMapping("/")
-	public ResponseEntity<Customer> registerCustomer(@RequestBody Customer cust){
-		Customer customer=customerService.addNewCustomer(cust);
+	public ResponseEntity<Customer> registerCustomer(@RequestBody Customer registration){
+		Customer customer=customerService.registerNewCustomer(registration);
 		return new ResponseEntity<>(customer, HttpStatus.OK);	
+	}
+	
+	@PostMapping("/login")
+    public ResponseEntity<String> loginCustomer(@RequestBody Map<String, String> loginData) {
+        String email = loginData.get("email");
+        String password = loginData.get("password");
+        Optional<Customer> customerLogin = customerService.loginCustomer(email, password);
+        if (customerLogin.isPresent()) {
+        	return ResponseEntity.ok("Login successful! you can now check rooms details.");
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+    }
+	
+	@GetMapping("/city/{city}")
+	public List<String> viewroomByCity(@PathVariable("city")String city){
+		List<String> roomList = customerService.listRoomByCity(city);
+		return roomList;
 	}
 	
 	@GetMapping("/{customerId}")
