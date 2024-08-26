@@ -14,7 +14,5 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
 	List<Customer> findCustomerByCustomerId(int customerId);
 	
 	Optional<Customer> findByEmail(String email);
-
-	List<String> findRoomByCity(String city);
 	
 }

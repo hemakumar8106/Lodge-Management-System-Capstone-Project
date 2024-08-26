@@ -32,9 +32,5 @@ public class CustomerService {
 		}
 		return Optional.empty();
 	}
-
-	public List<String> listRoomByCity(String city) {
-		// TODO Auto-generated method stub
-		return customerRepository.findRoomByCity(city);
-	}
+	
 }

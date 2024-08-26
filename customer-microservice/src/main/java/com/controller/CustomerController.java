@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.entity.Customer;
 import com.service.CustomerService;
 
@@ -22,7 +21,10 @@ import com.service.CustomerService;
 public class CustomerController {
 
 	@Autowired
-    CustomerService customerService;		
+    CustomerService customerService;
+	
+	@Autowired
+    CustomerFeignClient customerFeignClient;
 	
 	@PostMapping("/")
 	public ResponseEntity<Customer> registerCustomer(@RequestBody Customer registration){
@@ -41,9 +43,9 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
     }
 	
-	@GetMapping("/city/{city}")
-	public List<String> viewroomByCity(@PathVariable("city")String city){
-		List<String> roomList = customerService.listRoomByCity(city);
+	@GetMapping("/rooms/location/{location}")
+	public List<?> viewroomsByLocation(@PathVariable("location")String location){
+		List<?> roomList = customerFeignClient.listRoomsByLocation(location);
 		return roomList;
 	}
 	
