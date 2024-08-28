@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -35,6 +36,7 @@ public class Customer {
 
     @Column(name = "email")
     @NotEmpty(message = "Email is Required")
+    @Email(message = "Email should be valid")
     private String email;
 
     @Column(name = "password")
@@ -108,6 +110,12 @@ public class Customer {
 
 	public Customer() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", dateOfBirth=" + dateOfBirth
+				+ ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + "]";
 	}
 
 	

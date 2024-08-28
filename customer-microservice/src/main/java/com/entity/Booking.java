@@ -83,14 +83,12 @@ public class Booking {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
-    public String toString() {
-        return "Booking{" +
-                "bookingId=" + bookingId +
-                ", customerId=" + customerId +
-                ", roomReferenceId='" + roomReferenceId + '\'' +
-                ", bookingDate=" + bookingDate +
-                '}';
-    }
+	public String toString() {
+		return "Booking [bookingId=" + bookingId + ", customerId=" + customerId + ", roomReferenceId=" + roomReferenceId
+				+ ", bookingDate=" + bookingDate + "]";
+	}
+	
+	
 }

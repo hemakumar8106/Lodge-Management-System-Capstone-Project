@@ -123,17 +123,13 @@ public class Room {
 		this.price = price;
 		this.complimentaryFacilities = complimentaryFacilities;
 	}
-		
+
 	@Override
 	public String toString() {
-		return "Room{" +
-		       "roomId=" + roomId +
-		       ", roomReferenceId='" + roomReferenceId + '\'' +
-		       ", city='" + city + '\'' +
-		       ", location='" + location + '\'' +
-		       ", roomType='" + roomType + '\'' +
-		       ", price=" + price +
-		       ", complimentaryFacilities='" + complimentaryFacilities + '\'' +
-		       '}';
-	}         
+		return "Room [roomId=" + roomId + ", roomReferenceId=" + roomReferenceId + ", city=" + city + ", location="
+				+ location + ", roomType=" + roomType + ", price=" + price + ", complimentaryFacilities="
+				+ complimentaryFacilities + "]";
+	}
+		
+	
 }
