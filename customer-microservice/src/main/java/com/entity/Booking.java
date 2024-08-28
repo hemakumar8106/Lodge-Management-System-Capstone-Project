@@ -10,6 +10,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "booking")
@@ -21,13 +25,18 @@ public class Booking {
     private int bookingId;
 
     @Column(name = "customer_id")
+    @NotNull(message = "Customer ID is required")
     private int customerId;
 
     @Column(name = "room_reference_id")
+    @NotEmpty(message = "Room reference ID is required")
+    @Size(min = 1, max = 50, message = "Room reference ID must be between 1 and 50 characters")
     private String roomReferenceId;
 
     @Column(name = "booking_date")
     @Temporal(TemporalType.DATE)
+    @NotNull(message = "Booking date is required")
+    @FutureOrPresent(message = "Booking date must be today or in the future")
     private Date bookingDate;
 
 	public int getBookingId() {

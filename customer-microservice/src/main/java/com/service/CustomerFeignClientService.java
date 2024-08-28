@@ -1,4 +1,4 @@
-package com.controller;
+package com.service;
 
 import java.util.List;
 
@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name="room-microservice")
-public interface CustomerFeignClient {
+public interface CustomerFeignClientService {
 
 	@GetMapping("/rooms/location/{location}")
-	List<?> listRoomsByLocation(@PathVariable("location") String location);
-	
+	List<?> listRoomByLocation(@PathVariable("location") String location);
 }

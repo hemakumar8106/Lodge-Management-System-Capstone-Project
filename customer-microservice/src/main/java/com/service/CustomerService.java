@@ -1,6 +1,5 @@
 package com.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +17,6 @@ public class CustomerService {
 	public Customer registerNewCustomer(Customer cust) {
 		Customer customer=customerRepository.save(cust);
 		return customer;
-	}
-
-	public List<Customer> listcustomerByCustomerId(int customerId) {
-		
-		return customerRepository.findCustomerByCustomerId(customerId);
 	}
 
 	public Optional<Customer> loginCustomer(String email, String password) {

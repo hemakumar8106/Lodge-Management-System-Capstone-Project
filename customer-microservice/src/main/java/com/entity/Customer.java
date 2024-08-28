@@ -10,6 +10,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "customer")
@@ -21,19 +25,26 @@ public class Customer {
     private int customerId;
 
     @Column(name = "customer_name")
+    @NotEmpty(message = "Customer Name is Required")
     private String customerName;
 
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
+    @NotNull(message = "Date of Birth is Required")
     private Date dateOfBirth;
 
     @Column(name = "email")
+    @NotEmpty(message = "Email is Required")
     private String email;
 
     @Column(name = "password")
+    @NotEmpty(message = "Password is Required")
+    @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
     @Column(name = "phone_number")
+    @NotEmpty(message = "Phone Number is Required")
+    @Pattern(regexp = "\\d{10}", message = "Phone number must be exactly 10 digits")
     private String phoneNumber;
 
 	public int getCustomerId() {

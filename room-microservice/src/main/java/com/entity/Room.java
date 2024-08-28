@@ -8,6 +8,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "room")
@@ -19,21 +23,32 @@ public class Room {
 	private Integer roomId;
 	 
 	@Column(name = "room_reference_id")
+	@NotBlank(message = "Room reference ID is required")
+    @Size(min = 1, max = 50, message = "Room reference ID must be between 1 and 50 characters")
 	private String roomReferenceId;
 
 	@Column(name = "city")
+	@NotBlank(message = "City is required")
+    @Size(min = 1, max = 50, message = "City must be between 1 and 50 characters")
 	private String city;
 
     @Column(name = "location")
+    @NotBlank(message = "Location is required")
+    @Size(min = 1, max = 100, message = "Location must be between 1 and 100 characters")
 	private String location;
 
 	@Column(name = "room_type")
+	@NotBlank(message = "Room type is required")
+    @Size(min = 1, max = 30, message = "Room type must be between 1 and 30 characters")
 	private String roomType;
 
 	@Column(name = "price")
+	@NotNull(message = "Price is required")
+    @PositiveOrZero(message = "Price must be zero or a positive value")
 	private BigDecimal price;
 	   
 	@Column(name = "complimentary_facilities")
+	@Size(max = 255, message = "Complimentary facilities description cannot exceed 255 characters")
 	private String complimentaryFacilities;
 
 	public Integer getRoomId() {
